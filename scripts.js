@@ -2,18 +2,6 @@ const tambahButton = document.querySelector("#tambah");
 const formTambah = document.querySelector("#formTambah");
 const listTodo = document.querySelector(".row .col-md-12 ul");
 
-tambahButton.addEventListener("click", () => {
-  const list = handleList(formTambah.value);
-  listTodo.appendChild(list);
-
-  const span = listTodo.querySelector("span");
-  if (span != null) {
-    span.remove();
-  }
-
-  formTambah.value = "";
-});
-
 function handleList(val) {
   // Create li element
   const newList = document.createElement("li");
@@ -66,8 +54,6 @@ function handleList(val) {
 
   newList.appendChild(newDivLabel);
   newList.appendChild(newDivAction);
-
-  const dataId = newList.getAttribute("data-id");
 
   return newList;
 }
@@ -151,3 +137,15 @@ function editText(data) {
   );
   secDiv.insertBefore(newEditButton, del);
 }
+
+tambahButton.addEventListener("click", () => {
+  const list = handleList(formTambah.value);
+  listTodo.appendChild(list);
+
+  const span = listTodo.querySelector("span");
+  if (span != null) {
+    span.remove();
+  }
+
+  formTambah.value = "";
+});
